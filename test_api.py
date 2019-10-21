@@ -27,6 +27,7 @@ people_string = json_input
 data = json.loads(people_string)
 
 
+@allure.step('Login пользователей')
 class TestLogin:
     def test_login_owner_company(self):
         authorization = Authorization()
@@ -44,6 +45,7 @@ class TestLogin:
         assert authorization.auth(UserType.cardholder) == requests.status_codes.codes.OK
 
 
+@allure.step('Негаивные тесты на овнера')
 def test_error_owner():
     error_msg = {
         'title': 'Bad Request', 'status': 400, 'instance': '/api/v1/user/login/',
@@ -69,6 +71,7 @@ def test_error_owner():
     # print(response.text)
 
 
+@allure.step('Негативные тесты на ацептора')
 def test_error_acceptor():
     error_msg = {
         'title': 'Bad Request', 'status': 400, 'instance': '/api/v1/user/login/',
@@ -87,7 +90,7 @@ def test_error_acceptor():
     assert status == requests.status_codes.codes.BAD_REQUEST
     assert msg == error_msg
 
-
+@allure.step('Негативные тесты на картхолдера')
 def test_error_cardholder():
     error_msg = {
         'title': 'Bad Request', 'status': 400, 'instance': '/api/v1/user/login/',
@@ -106,7 +109,7 @@ def test_error_cardholder():
     assert status == requests.status_codes.codes.BAD_REQUEST
     assert msg == error_msg
 
-
+@allure.step('Проверка данных при входе овнера, ацептора, кардхолдера')
 class TestProfile_info:
     owner_fields = [
         'address', 'avatar', 'birth_date', 'city', 'city_object', 'company_name', 'company_phone',
@@ -142,7 +145,7 @@ class TestProfile_info:
     #     assert status == requests.status_codes.codes.OK
     #     assert ListEquals.equals(keys, self.owner_fields)
 
-
+@allure.step('Негативные на создание программы')
 class test_bad_create_program():
     def test_bad_create_program0(self):
         program_data = {}
@@ -214,7 +217,7 @@ class test_bad_create_program():
 
 '''''''''Program Owner posts testing'''''
 
-
+@allure.step('Негативные тесты на посты')
 def test_bad_post1():
     i_path = '/home/mark/Pictures/car.jpg'
     files = None
@@ -242,7 +245,7 @@ def test_bad_post1():
 
     assert status == requests.status_codes.codes.OK
 
-
+@allure.step('Негативные тесты на посты 2')
 def test_bad_post2():
     i_path = '/home/mark/Pictures/car.jpg'
     files = None
@@ -270,7 +273,7 @@ def test_bad_post2():
 
     assert status == requests.status_codes.codes.BAD_REQUEST
 
-
+@allure.step('Негативные тесты на посты 3')
 def test_bad_post3():
     i_path = '/home/mark/Pictures/car.jpg'
     files = None
@@ -301,7 +304,7 @@ def test_bad_post3():
 
 """нужно убрать возможность ставить 0 в is_private"""
 
-
+@allure.step('Негативные тесты на посты 4')
 @pytest.mark.xfail
 def test_bad_post4():
     i_path = '/home/mark/Pictures/car.jpg'
@@ -331,7 +334,7 @@ def test_bad_post4():
     assert status == requests.status_codes.codes.BAD_REQUEST
 
 
-@pytest.mark.xfail
+@allure.step('Негативные тесты на посты 5')
 def test_bad_post5():
     i_path = '/home/mark/Pictures/car.jpg'
     files = None
@@ -360,7 +363,7 @@ def test_bad_post5():
     assert status == requests.status_codes.codes.BAD_REQUEST
 
 
-@pytest.mark.xfail
+@allure.step('Негативные тесты на посты 6')
 def test_bad_post5():
     i_path = '/home/mark/Pictures/car.jpg'
     files = None
@@ -389,8 +392,8 @@ def test_bad_post5():
     assert status == requests.status_codes.codes.BAD_REQUEST
 
 
-@pytest.mark.xfail
-def test_bad_post5():
+@allure.step('Негативные тесты на посты 9')
+def test_bad_post9():
     i_path = '/home/mark/Pictures/car.jpg'
     files = None
 
@@ -453,7 +456,7 @@ def test_bad_post6():
 """Acceptor posts"""
 
 
-@pytest.mark.acceptor
+@allure.step('Негативные тесты на посты акцептора')
 def test_bad_post7():
     i_path = '/home/mark/Pictures/logo-1.jpg'
     files = None
@@ -480,7 +483,3 @@ def test_bad_post7():
     print(status)
 
     assert status == requests.status_codes.codes.FORBIDDEN
-
-
-
-
