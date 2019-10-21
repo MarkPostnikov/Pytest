@@ -4,6 +4,7 @@ import selenium
 from selenium import webdriver
 import pytest
 import time
+import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
@@ -87,7 +88,7 @@ def test_login_p(browser):
 
 #
 # def test_create_program(test_login_p, browser):
-
+@allure.step('Create Program')
 def test_create_prog(test_login_p, browser, GenKey):
     browser.maximize_window()
     browser.get('https://programs.stage.incase.work/programs/new')

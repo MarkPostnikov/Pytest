@@ -1,0 +1,3 @@
+files = {'images[0]': ('car.jpg', <_io.BufferedReader name='/home/mark/Pictures/car.jpg'>, 'multipart/form-data')}
+{"title": "Unauthorized", "status": 401, "instance": "/api/v1/posts/post/"}
+401

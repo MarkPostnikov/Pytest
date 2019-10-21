@@ -109,6 +109,7 @@ def test_error_cardholder():
     assert status == requests.status_codes.codes.BAD_REQUEST
     assert msg == error_msg
 
+
 @allure.step('Проверка данных при входе овнера, ацептора, кардхолдера')
 class TestProfile_info:
     owner_fields = [
@@ -144,6 +145,7 @@ class TestProfile_info:
     #
     #     assert status == requests.status_codes.codes.OK
     #     assert ListEquals.equals(keys, self.owner_fields)
+
 
 @allure.step('Негативные на создание программы')
 class test_bad_create_program():
@@ -217,6 +219,7 @@ class test_bad_create_program():
 
 '''''''''Program Owner posts testing'''''
 
+
 @allure.step('Негативные тесты на посты')
 def test_bad_post1():
     i_path = '/home/mark/Pictures/car.jpg'
@@ -245,6 +248,7 @@ def test_bad_post1():
 
     assert status == requests.status_codes.codes.OK
 
+
 @allure.step('Негативные тесты на посты 2')
 def test_bad_post2():
     i_path = '/home/mark/Pictures/car.jpg'
@@ -272,6 +276,7 @@ def test_bad_post2():
     print(status)
 
     assert status == requests.status_codes.codes.BAD_REQUEST
+
 
 @allure.step('Негативные тесты на посты 3')
 def test_bad_post3():
@@ -303,6 +308,7 @@ def test_bad_post3():
 
 
 """нужно убрать возможность ставить 0 в is_private"""
+
 
 @allure.step('Негативные тесты на посты 4')
 @pytest.mark.xfail

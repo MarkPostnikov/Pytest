@@ -1,0 +1,6 @@
+/home/mark/PycharmProjects/Pytest
+None
+{'title': 'Bad Request', 'status': 400, 'instance': '/api/v1/user/login/', 'detail': 'Username or password was not provided'}
+/home/mark/PycharmProjects/Pytest
+None
+{'title': 'Bad Request', 'status': 400, 'instance': '/api/v1/user/login/', 'detail': 'Username or password was not provided'}
